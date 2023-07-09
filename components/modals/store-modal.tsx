@@ -39,9 +39,7 @@ export const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-
       const response = await axios.post("/api/stores", values);
-
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
       toast.error("Something went wrong.");
@@ -53,7 +51,7 @@ export const StoreModal = () => {
   return (
     <Modal
       title='Create Store'
-      description='Add a new store to manage products and categories'
+      description='Add a new store to manage products and categories.'
       isOpen={storeModal.isOpen}
       onClose={storeModal.onClose}
     >

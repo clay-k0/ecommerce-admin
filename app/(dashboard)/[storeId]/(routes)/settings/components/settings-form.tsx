@@ -51,14 +51,10 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
   const onSubmit = async (data: SettingsFormValues) => {
     try {
-      if (data.name === initialData.name) {
-        toast.error("No changes detected. Try making some changes.");
-        return;
-      }
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success("Store successfully updated");
+      toast.success("Store successfully updated!");
     } catch (error) {
       toast.error("Something went wrong.");
     } finally {
@@ -72,9 +68,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
       router.push("/");
-      toast.success("Store successfully deleted");
+      toast.success("Store successfully deleted.");
     } catch (error) {
-      toast.error("ensure you have removed all products and categories first.");
+      toast.error("Please remove all products and categories first.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -140,11 +136,6 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         title='NEXT_PUBLIC_API_URL'
         description={`${origin}/api/${params.storeId}`}
         variant='public'
-      />
-      <ApiAlert
-        title='NEXT_PUBLIC_ADMIN_API_URL'
-        description={`${origin}/api/${params.storeId}/admin`}
-        variant='admin'
       />
     </>
   );
