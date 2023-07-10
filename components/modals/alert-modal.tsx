@@ -32,6 +32,10 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       label: "category",
     },
     {
+      href: `/${params.storeId}/sizes`,
+      label: "size",
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "store",
     },
