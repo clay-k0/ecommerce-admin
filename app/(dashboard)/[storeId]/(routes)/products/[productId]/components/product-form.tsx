@@ -100,13 +100,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
   const onSubmit = async (data: ProductFormValues) => {
     try {
-      // if (
-      //   data.name === initialData?.name &&
-      //   data.images === initialData?.images
-      // ) {
-      //   toast.error("Make at least one change.");
-      //   return;
-      // }
       setLoading(true);
       if (initialData) {
         await axios.patch(
