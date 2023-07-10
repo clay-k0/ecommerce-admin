@@ -71,7 +71,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               className='mt-3'
             >
               <ImagePlus className='h-5 w-5 mr-2' />
-              Upload Image
+              Upload An Image
             </Button>
           );
         }}
