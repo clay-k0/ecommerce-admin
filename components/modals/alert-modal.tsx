@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
+import { useParams, usePathname } from "next/navigation";
 
 interface AlertModalProps {
   isOpen: boolean;
@@ -18,6 +19,23 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   loading,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
+  const params = useParams();
+
+  const routes = [
+    {
+      href: `/${params.storeId}/billboards`,
+      label: "billboard",
+    },
+    {
+      href: `/${params.storeId}/categories`,
+      label: "category",
+    },
+    {
+      href: `/${params.storeId}/settings`,
+      label: "store",
+    },
+  ];
 
   useEffect(() => {
     setIsMounted(true);
@@ -27,10 +45,13 @@ export const AlertModal: React.FC<AlertModalProps> = ({
     return null;
   }
 
+  const currentRoute = routes.find((route) => route.href === pathname);
+  const label = currentRoute ? currentRoute.label : "";
+
   return (
     <Modal
-      title='Are you sure?'
-      description='This action cannot be undone.'
+      title='Are you absolutely sure?'
+      description={`This action cannot be undone. This will permanently delete this ${label}.`}
       isOpen={isOpen}
       onClose={onClose}
     >

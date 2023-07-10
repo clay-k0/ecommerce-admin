@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { MainNav } from "@/components/main-nav";
 import { ModeToggle } from "./mode-toggle";
 import StoreSwitcher from "@/components/store-switcher";
+import { Separator } from "@/components/ui/separator";
 import prismadb from "@/lib/prismadb";
 
 const Navbar = async () => {
@@ -26,10 +27,21 @@ const Navbar = async () => {
         <div>
           <MainNav className='mx-6' />
         </div>
-        <div className='ml-auto flex items-center space-x-4'>
+        <Separator orientation='vertical' />
+        <div className='ml-auto flex items-center space-x-4 h-full text-sm'>
+          <Separator orientation='vertical' />
           <ModeToggle />
           <UserButton afterSignOutUrl='/' />
         </div>
+        {/* <div>
+          <div className='flex h-5 items-center space-x-4 text-sm'>
+            <div>Blog</div>
+            <Separator orientation='vertical' />
+            <div>Docs</div>
+            <Separator orientation='vertical' />
+            <div>Source</div>
+          </div>
+        </div> */}
       </div>
     </div>
   );

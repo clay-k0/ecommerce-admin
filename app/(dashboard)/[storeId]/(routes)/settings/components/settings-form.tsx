@@ -51,6 +51,10 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
   const onSubmit = async (data: SettingsFormValues) => {
     try {
+      if (data.name === initialData.name) {
+        toast.error("Make at least one change.");
+        return;
+      }
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
@@ -70,7 +74,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       router.push("/");
       toast.success("Store successfully deleted.");
     } catch (error) {
-      toast.error("Remove all products and categories first.");
+      toast.error("Remove products and categories.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -93,7 +97,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           size='icon'
           onClick={() => setOpen(true)}
         >
-          <Trash2 className='h-6 w-6' />
+          <Trash2 className='h-5 w-5' />
         </Button>
       </div>
       <Separator />

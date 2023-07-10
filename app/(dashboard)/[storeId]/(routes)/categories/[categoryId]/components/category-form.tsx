@@ -52,8 +52,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit Category" : "Create Category";
-  const description = initialData ? "Edit Category" : "Add a new category";
+  const title = initialData ? "Edit Category" : "Create A Category";
+  const description = initialData
+    ? "Make changes to this category"
+    : "Add a new category";
   const toastMessage = initialData
     ? "Category successfully updated."
     : "Category successfully created!";
@@ -69,6 +71,13 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
   const onSubmit = async (data: CategoryFormValues) => {
     try {
+      if (
+        data.name === initialData?.name &&
+        data.billboardId === initialData?.billboardId
+      ) {
+        toast.error("Make at least one change.");
+        return;
+      }
       setLoading(true);
       if (initialData) {
         await axios.patch(
@@ -98,7 +107,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
       router.push(`/${params.storeId}/categories`);
       toast.success("Category successfully deleted.");
     } catch (error) {
-      toast.error("Remove all categories that are using this category.");
+      toast.error("Remove categories linked to this category.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -122,7 +131,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-6 w-6' />
+            <Trash2 className='h-5 w-5' />
           </Button>
         )}
       </div>

@@ -41,7 +41,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       router.refresh();
       toast.success("Billboard successfully deleted.");
     } catch (error) {
-      toast.error("Remove all categories that are using this billboard.");
+      toast.error("Remove categories linked to this billboard.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -75,11 +75,11 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             }
           >
             <Edit className='mr-2 h-4 w-4' />
-            Update
+            Edit
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
-            <Trash2 className='mr-2 h-4 w-4' />
-            Delete
+            <Trash2 className='mr-2 h-4 w-4 text-red-500' />
+            <p className='text-red-500'>Delete</p>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -45,7 +45,9 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit billboard" : "Create billboard";
-  const description = initialData ? "Edit billboard" : "Add a new billboard";
+  const description = initialData
+    ? "Make change to this billboard"
+    : "Add a new billboard";
   const toastMessage = initialData
     ? "Billboard successfully updated."
     : "Billboard successfully created!";
@@ -61,6 +63,13 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 
   const onSubmit = async (data: BillboardFormValues) => {
     try {
+      if (
+        data.label === initialData?.label &&
+        data.imageUrl === initialData?.imageUrl
+      ) {
+        toast.error("Make at least one change.");
+        return;
+      }
       setLoading(true);
       if (initialData) {
         await axios.patch(
@@ -90,7 +99,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard successfully deleted.");
     } catch (error) {
-      toast.error("Remove all categories that are using this billboard.");
+      toast.error("Remove categories linked to this billboard.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -114,7 +123,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-6 w-6' />
+            <Trash2 className='h-5 w-5' />
           </Button>
         )}
       </div>
