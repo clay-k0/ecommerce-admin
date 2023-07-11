@@ -24,9 +24,7 @@ export const ProductClient: React.FC<ProductClientProps> = ({ data }) => {
       <div className='flex items-center justify-between'>
         <Heading
           title={`Products (${data.length})`}
-          description={`Manage your ${
-            data.length > 0 ? `${data.length}` : ""
-          } ${data.length === 1 ? "product" : "products"}`}
+          description={"Manage your products"}
         />
         <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
           <Plus className='mr-2 h-5 w-5' />
