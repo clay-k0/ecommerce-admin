@@ -44,7 +44,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit color" : "Create color";
+  const title = initialData ? "Edit Color" : "Create Color";
   const description = initialData
     ? "Make changes to this color"
     : "Add a new color";
@@ -121,7 +121,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-5 w-5' />
+            <Trash2 className='h-6 w-6' />
           </Button>
         )}
       </div>
@@ -173,12 +173,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             {action}
           </Button>
         </form>

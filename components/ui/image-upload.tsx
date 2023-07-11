@@ -49,7 +49,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 variant='destructive'
                 size='icon'
               >
-                <Trash2 className='h-5 w-5' />
+                <Trash2 className='h-6 w-6' />
               </Button>
             </div>
             <Image src={url} alt='image' className='object-cover' fill />

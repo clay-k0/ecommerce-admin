@@ -97,7 +97,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
           size='icon'
           onClick={() => setOpen(true)}
         >
-          <Trash2 className='h-5 w-5' />
+          <Trash2 className='h-6 w-6' />
         </Button>
       </div>
       <Separator />
@@ -125,12 +125,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             Save Changes
           </Button>
         </form>

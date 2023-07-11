@@ -70,7 +70,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit product" : "Create product";
+  const title = initialData ? "Edit Product" : "Create Product";
   const description = initialData
     ? "Make changes to this product"
     : "Add a new product";
@@ -100,6 +100,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
   const onSubmit = async (data: ProductFormValues) => {
     try {
+      if (data.images.length === 0) {
+        toast.error("You must upload at least one image.");
+        return;
+      }
       setLoading(true);
       if (initialData) {
         await axios.patch(
@@ -151,7 +155,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-5 w-5' />
+            <Trash2 className='h-6 w-6' />
           </Button>
         )}
       </div>
@@ -276,7 +280,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     <SelectContent>
                       {sizes.map((size) => (
                         <SelectItem key={size.id} value={size.id}>
-                          {size.name}
+                          {size.name} ({size.value})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -308,7 +312,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     <SelectContent>
                       {colors.map((color) => (
                         <SelectItem key={color.id} value={color.id}>
-                          {color.name}
+                          <div className='flex justify-start items-center'>
+                            <div
+                              className='w-5 h-5 rounded-full inline-block mr-3 flex-column items-center border border-neutral-600'
+                              style={{ backgroundColor: color.value }}
+                            />
+                            {color.name}
+                          </div>
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -360,12 +370,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             {action}
           </Button>
         </form>

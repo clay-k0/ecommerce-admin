@@ -131,7 +131,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-5 w-5' />
+            <Trash2 className='h-6 w-6' />
           </Button>
         )}
       </div>
@@ -192,12 +192,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             {action}
           </Button>
         </form>

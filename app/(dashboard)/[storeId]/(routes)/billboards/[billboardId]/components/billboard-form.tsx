@@ -44,7 +44,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit billboard" : "Create billboard";
+  const title = initialData ? "Edit Billboard" : "Create Billboard";
   const description = initialData
     ? "Make changes to this billboard"
     : "Add a new billboard";
@@ -123,7 +123,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-5 w-5' />
+            <Trash2 className='h-6 w-6' />
           </Button>
         )}
       </div>
@@ -170,12 +170,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             {action}
           </Button>
         </form>

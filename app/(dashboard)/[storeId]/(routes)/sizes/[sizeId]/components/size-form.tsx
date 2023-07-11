@@ -118,7 +118,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
             size='icon'
             onClick={() => setOpen(true)}
           >
-            <Trash2 className='h-5 w-5' />
+            <Trash2 className='h-6 w-6' />
           </Button>
         )}
       </div>
@@ -164,12 +164,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
               )}
             />
           </div>
-          <Button
-            disabled={loading}
-            className='ml-auto'
-            variant='accept'
-            type='submit'
-          >
+          <Button disabled={loading} className='ml-auto' type='submit'>
             {action}
           </Button>
         </form>
