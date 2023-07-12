@@ -24,15 +24,15 @@ const Navbar = async () => {
   return (
     <div className='border-b'>
       <div className='flex h-16 items-center px-4'>
-        <div className='mr-5'>
+        <div className='mr-7'>
           <SiteLogo />
         </div>
         <Separator orientation='vertical' />
-        <div className='ml-5'>
+        <div className='ml-7'>
           <StoreSwitcher items={stores} />
         </div>
-        <div>
-          <MainNav className='mx-6' />
+        <div className='container'>
+          <MainNav className='mx-9' />
         </div>
         <div className='ml-auto flex items-center space-x-4 h-full text-sm'>
           <Separator orientation='vertical' />

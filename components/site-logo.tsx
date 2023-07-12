@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const SiteLogo = () => {
   return (
-    <div className='flex items-baseline space-x-1.5'>
-      <Link href='/'>
+    <>
+      <Link href='/' className='flex items-baseline space-x-1.5'>
         <h1 className='text-3xl font-bold'>UrbanGoods</h1>
+        <p className='text-xs font-bold text-lime'>Admin</p>
       </Link>
-      <p className='text-xs font-bold text-lime'>Admin</p>
-    </div>
+    </>
   );
 };
 

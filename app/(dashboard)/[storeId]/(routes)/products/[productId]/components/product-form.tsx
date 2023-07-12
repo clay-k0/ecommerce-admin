@@ -230,7 +230,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name='categoryId'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Category ({categories.length})</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -262,7 +262,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name='sizeId'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
+                  <FormLabel>Size ({sizes.length})</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -294,7 +294,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               name='colorId'
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Color</FormLabel>
+                  <FormLabel>Color ({colors.length})</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
