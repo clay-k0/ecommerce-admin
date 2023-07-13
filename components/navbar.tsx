@@ -31,9 +31,7 @@ const Navbar = async () => {
         <div className='ml-7'>
           <StoreSwitcher items={stores} />
         </div>
-        <div className='container'>
-          <MainNav className='mx-9' />
-        </div>
+        <MainNav className='mx-9' />
         <div className='ml-auto flex items-center space-x-4 h-full text-sm'>
           <Separator orientation='vertical' />
           <ModeToggle />
